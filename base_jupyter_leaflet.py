@@ -8,6 +8,7 @@
 #   
 #   imageFilterAWEI: Recibe una imagen y le aplica un filtro basándose en el índice AWEI.
 #   cloudMasking: Recibe una imagen y le aplica un filtro de nubosidad (por ahora se filtra con un valor de 10)
+#   GetTileLayerUrl: Recibe una imagen de Earth Egine y retorna un objeto que se puede mostrar en el mapa interactivo.
 #
 #   Función principal: Código inicial en el cual se obtiene una imagen satelital (Landsat 8) la cual está limitada a parámetros de fecha y una geometría
 #   definida (polígono) para limitar el área de interés. A dicha imagen se le aplica combinación de filtros AWEI y/o nubosidad para obtener una imagen final #   con superficie de agua resaltada.
@@ -27,6 +28,13 @@ def cloudMasking(image):
     clouds = ee.Algorithms.Landsat.simpleCloudScore(image).select(["cloud"])
     
     return image.updateMask(clouds.lt(10))
+
+def GetTileLayerUrl(ee_image_object):
+    
+    map_id = ee.Image(ee_image_object).getMapId()
+    tile_url_template = "https://earthengine.googleapis.com/map/{mapid}/{{z}}/{{x}}/{{y}}?token={token}"
+    
+    return tile_url_template.format(**map_id)
     
 #########################################################   
 
