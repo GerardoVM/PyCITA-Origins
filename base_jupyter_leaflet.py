@@ -1,7 +1,6 @@
 #############################################################################################################  
 #   
-#   Código de prueba inicial con API de GEE en Jupyter
-#
+#   Código de prueba inicial con API de GEE en Jupyter (6/11/2018)
 #   Se requiere instalar ipyleaflet en jupyter para poder visualizar la imagen final en un mapa
 #
 #   Funciones definidas
