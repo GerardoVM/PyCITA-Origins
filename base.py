@@ -1,6 +1,6 @@
 #############################################################################################################  
 #   
-#   Código de prueba inicial con API de GEE
+#   Código de prueba inicial con API de GEE (6/11)
 #
 #   Funciones definidas
 #   
