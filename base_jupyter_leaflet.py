@@ -42,7 +42,7 @@ import ee
 
 from ipyleaflet import (
     Map, basemaps, basemap_to_tiles,
-    WMSLayer, LayersControl
+    WMSLayer, LayersControl, SplitMapControl
 )
 
 ee.Initialize()
@@ -69,12 +69,14 @@ baseMap = ipyleaflet.Map(
     layout={'width':'1000px', 'height':'400px'}
 )
 
-baseMap.add_layer(
-    ipyleaflet.TileLayer(url=GetTileLayerUrl(
+right_layer = ipyleaflet.TileLayer(url=GetTileLayerUrl(
         landsat_cloud_masked_median_AWEI.visualize(min=0.0, max=1.0, palette=['FFFFFF', '000000'])
+    ))
+left_layer = ipyleaflet.TileLayer(url=GetTileLayerUrl(
+        landsat.mosaic())
     )
-))
 
-baseMap.add_control(LayersControl())
+control = SplitMapControl(right_layer=right_layer)
+baseMap.add_control(control)
 
 baseMap
