@@ -1,11 +1,11 @@
 #############################################################################################################  
 #   
-#   Código filtro AWEI para buffer del río Huallaga API de GEE en Jupyter
+#   Código filtro AWEI para buffer de ríos usando el API de GEE en Jupyter
 #
 #   IMPORTANTE:
 #        
 #   Se requiere instalar ipyleaflet en jupyter para poder visualizar la imagen final en un mapa.
-#   Para visualizar el filtro del buffer se requiere tener la información respectiva en un Fusion Table (preferible generada desde un archivo kml) y reemplazar el id de la misma en el código
+#   Para visualizar el filtro del buffer se requiere tener la información respectiva en un Fusion Table (preferible generada desde un archivo kml, en el código se usó de ejemplo buffer del río Hullaga) y reemplazar el id de la misma en el código
 #   
 #   Funciones definidas
 #   
@@ -13,7 +13,7 @@
 #   cloudMasking: Recibe una imagen y le aplica un filtro de nubosidad (por ahora se filtra con un valor de 10)
 #   GetTileLayerUrl: Recibe una imagen de Earth Egine y retorna un objeto que se puede mostrar en el mapa interactivo.
 #
-#   Función principal: Genera una Geometría a partir de la información del Fusion Table (esto nos brinda la información de las coordenadas par delimitar el área de interés.
+#   Función principal: Genera una Geometría a partir de la información del Fusion Table (esto nos brinda la información de las coordenadas par delimitar el área de interés).
 #   FInalmente, se procede a relizar los filtros utilizados anteriormente en el código base (Revisar repositorio archivo base.py)
 #
 #############################################################################################################
