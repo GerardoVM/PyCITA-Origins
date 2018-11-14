@@ -57,14 +57,24 @@ def maskClouds(image):
     cirrusBitMask = ee.Number(2).pow(11).int()
     mask = qa.bitwiseAnd(cloudBitMask).eq(0).And(qa.bitwiseAnd(cirrusBitMask).eq(0))
     return image.updateMask(mask).divide(10000)
+
+def GetTileLayerUrl(ee_image_object):
+    
+    map_id = ee.Image(ee_image_object).getMapId()
+    tile_url_template = "https://earthengine.googleapis.com/map/{mapid}/{{z}}/{{x}}/{{y}}?token={token}"
+    
+    return tile_url_template.format(**map_id)
     
 ################################################################################ 
 
 import ee
+import ipyleaflet
 from ipyleaflet import (
     Map, basemaps, basemap_to_tiles,
     WMSLayer, LayersControl, SplitMapControl
 )
+
+ee.Initialize()
 
 buffer_huallaga = ee.FeatureCollection("ft:1EBinDHxAN9WBMQXImPCnLDuCm_foWX5Jyj48TB8d")
 geometry_huallaga = buffer_huallaga.geometry()
